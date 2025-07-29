@@ -84,9 +84,12 @@ const ProductCard = ({ product, index = 0 }) => {
 
             {/* Prix */}
             <div className="flex items-center justify-between">
-              <span className="text-xl font-bold text-black">
-                {product.price.toFixed(2)} €
-              </span>
+              <span className="text-xl font-bold text-black block">
+      ${product.price.toFixed(2)}
+    </span>
+    <span className="text-sm text-gray-500">
+      {(product.price * 2700).toLocaleString('fr-CD')} FC
+    </span>
               <div className="flex space-x-1">
                 {product.colors.slice(0, 3).map((color, i) => (
                   <div
