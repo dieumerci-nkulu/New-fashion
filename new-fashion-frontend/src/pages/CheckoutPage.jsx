@@ -32,7 +32,7 @@ const CheckoutPage = () => {
     address: '',
     city: '',
     postalCode: '',
-    country: 'France',
+    country: 'Republique Démocratique du Congo',
     phone: '',
     cardNumber: '',
     expiryDate: '',

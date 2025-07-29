@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import ProductCard from '@/components/ProductCard';
 import { products, getProductsByCategory, searchProducts } from '@/data/products';
 
+
 const ProductsPage = () => {
   const [searchParams] = useSearchParams();
   const [filteredProducts, setFilteredProducts] = useState(products);
@@ -57,6 +58,7 @@ const ProductsPage = () => {
     { value: 'homme', label: 'Homme' },
     { value: 'femme', label: 'Femme' },
     { value: 'enfant', label: 'Enfant' },
+    { value: 'accessoire', label: 'Accessoire' },
   ];
 
   const sortOptions = [

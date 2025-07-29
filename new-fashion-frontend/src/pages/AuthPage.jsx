@@ -187,7 +187,7 @@ const AuthPage = () => {
                       <Input
                         id="register-name"
                         type="text"
-                        placeholder="Jean Dupont"
+                        placeholder="Dieumerci Nkulu"
                         value={registerData.name}
                         onChange={(e) => setRegisterData(prev => ({ ...prev, name: e.target.value }))}
                         className="pl-10"

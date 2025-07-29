@@ -6,6 +6,12 @@ import { ArrowRight, Star, Truck, Shield, Headphones } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ProductCard from '@/components/ProductCard';
 import { products } from '@/data/products';
+import IMG256 from '@/assets/IMG256.jpg';
+import IMG285 from '@/assets/IMG285.jpg';
+import IMG208 from '@/assets/IMG208.jpg';
+import IMMG from '@/assets/IMMG.jpg';
+import IMG234 from '@/assets/IMG234.jpg';
+import IMG142 from '@/assets/IMG142.jpg';
 
 const HomePage = () => {
   const featuredProducts = products.slice(0, 6);
@@ -78,12 +84,12 @@ const HomePage = () => {
               <div className="grid grid-cols-2 gap-4">
                 <img  
                   alt="Femme portant une robe élégante noire"
-                  className="rounded-lg shadow-lg hover-lift"
-                 src="https://images.unsplash.com/photo-1675539853780-c57e483c6311" />
+          className="rounded-lg shadow-lg hover-lift"
+          src={IMG256} />
                 <img  
                   alt="Homme en chemise blanche et jean"
-                  className="rounded-lg shadow-lg hover-lift mt-8"
-                 src="https://images.unsplash.com/photo-1675410745450-ef0f2620b7f6" />
+          className="rounded-lg shadow-lg hover-lift mt-8"
+          src={IMG285} />
               </div>
               <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-lg shadow-lg">
                 <div className="flex items-center space-x-2">
@@ -116,46 +122,53 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              {
-                title: "Homme",
-                description: "Style moderne et élégant",
-                link: "/products?category=homme",
-                image: "Homme en costume moderne et élégant"
-              },
-              {
-                title: "Femme",
-                description: "Tendance et sophistication",
-                link: "/products?category=femme",
-                image: "Femme en tenue tendance et sophistiquée"
-              },
-              {
-                title: "Enfant",
-                description: "Confort et couleurs vives",
-                link: "/products?category=enfant",
-                image: "Enfants heureux en vêtements colorés"
-              }
+                          {
+                  title: 'Homme',
+                  description: 'Style moderne et élégant',
+                  link: '/products?category=homme',
+                  image: IMG208,
+                },
+                {
+                  title: 'Femme',
+                  description: 'Tendance et sophistication',
+                  link: '/products?category=femme',
+                  image: IMMG,
+                },
+                {
+                  title: 'Enfant',
+                  description: 'Confort et couleurs vives',
+                  link: '/products?category=enfant',
+                  image: IMG234,
+                },
+                {
+                  title: 'Accessoire',
+                  description: 'Luxueux et pratiques',
+                  link: '/products?category=accessoire',
+                  image: IMG142,
+                },
             ].map((category, index) => (
               <motion.div
-                key={category.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group"
-              >
-                <Link to={category.link}>
-                  <div className="relative aspect-[4/5] rounded-lg overflow-hidden hover-lift">
-                    <img  
-                      alt={`Collection ${category.title.toLowerCase()}`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                     src="https://images.unsplash.com/photo-1661358789654-b6ab2cb6e0a3" />
-                    <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300" />
-                    <div className="absolute bottom-6 left-6 text-white">
-                      <h3 className="text-2xl font-bold mb-2">{category.title}</h3>
-                      <p className="text-sm opacity-90">{category.description}</p>
-                    </div>
+              key={category.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group"
+            >
+              <Link to={category.link}>
+                <div className="relative aspect-[4/5] rounded-lg overflow-hidden hover-lift">
+                  <img
+                    alt={`Collection ${category.title.toLowerCase()}`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    src={category.image}
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300" />
+                  <div className="absolute bottom-6 left-6 text-white">
+                    <h3 className="text-2xl font-bold mb-2">{category.title}</h3>
+                    <p className="text-sm opacity-90">{category.description}</p>
                   </div>
-                </Link>
-              </motion.div>
+                </div>
+              </Link>
+            </motion.div>
             ))}
           </div>
         </div>
@@ -214,7 +227,7 @@ const HomePage = () => {
               {
                 icon: Truck,
                 title: "Livraison Gratuite",
-                description: "Livraison gratuite dès 50€ d'achat partout en France"
+                description: "Livraison gratuite dès 50$ d'achat partout en RDC"
               },
               {
                 icon: Shield,

@@ -1,13 +1,29 @@
+import IMMG1 from '@/assets/IMMG1.jpg';
+import IMG274 from '@/assets/IMG274.jpg';
+import IMG311 from '@/assets/IMG311.jpg';
+import IMG09 from '@/assets/IMG09.jpg';
+import IMG10 from '@/assets/IMG10.jpg';
+import IMG265 from '@/assets/IMG265.jpg';
+import IMG263 from '@/assets/IMG263.jpg';
+import IMG267 from '@/assets/IMG267.jpg';
+import IMG233 from '@/assets/IMG233.jpg';
+import IMG101 from '@/assets/IMG101.jpg';
+import IMG236 from '@/assets/IMG236.jpg';
+import IMG226 from '@/assets/IMG226.jpg';
+import IMG155 from '@/assets/IMG155.jpg';
+import IMG156 from '@/assets/IMG156.jpg';
+import IMG145 from '@/assets/IMG145.jpg';
+import IMG176 from '@/assets/IMG176.jpg';
 
 export const products = [
   // Homme
   {
     id: 1,
-    name: "T-shirt Premium Noir",
+    name: 'T-shirt Premium Noir',
+    description: 'T-shirt en coton bio de qualité supérieure, coupe moderne et confortable.',
     price: 29.99,
     category: "homme",
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=600&fit=crop",
-    description: "T-shirt en coton bio de qualité supérieure, coupe moderne et confortable.",
+   image: IMMG1,
     sizes: ["S", "M", "L", "XL"],
     colors: ["Noir", "Blanc", "Gris"],
     tags: ["casual", "coton", "bio"],
@@ -19,7 +35,7 @@ export const products = [
     name: "Jean Slim Fit",
     price: 79.99,
     category: "homme",
-    image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=500&h=600&fit=crop",
+    image: IMG274,
     description: "Jean slim fit en denim stretch, parfait pour un look moderne et décontracté.",
     sizes: ["30", "32", "34", "36", "38"],
     colors: ["Bleu foncé", "Noir", "Bleu clair"],
@@ -32,7 +48,7 @@ export const products = [
     name: "Chemise Blanche Classique",
     price: 59.99,
     category: "homme",
-    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500&h=600&fit=crop",
+    image: IMG311,
     description: "Chemise blanche intemporelle, parfaite pour le bureau ou les occasions spéciales.",
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["Blanc", "Bleu clair", "Rose pâle"],
@@ -45,7 +61,7 @@ export const products = [
     name: "Sweat à Capuche Gris",
     price: 49.99,
     category: "homme",
-    image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&h=600&fit=crop",
+    image: IMG09,
     description: "Sweat à capuche confortable en molleton, idéal pour les journées décontractées.",
     sizes: ["S", "M", "L", "XL"],
     colors: ["Gris", "Noir", "Marine"],
@@ -60,7 +76,7 @@ export const products = [
     name: "Robe Noire Élégante",
     price: 89.99,
     category: "femme",
-    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&h=600&fit=crop",
+    image: IMG10,
     description: "Robe noire sophistiquée, parfaite pour les soirées et événements spéciaux.",
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: ["Noir", "Marine", "Bordeaux"],
@@ -73,7 +89,7 @@ export const products = [
     name: "Blouse Blanche Fluide",
     price: 45.99,
     category: "femme",
-    image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500&h=600&fit=crop",
+   image: IMG265,
     description: "Blouse fluide et légère, idéale pour un look professionnel et féminin.",
     sizes: ["XS", "S", "M", "L"],
     colors: ["Blanc", "Crème", "Rose poudré"],
@@ -86,7 +102,7 @@ export const products = [
     name: "Jean Taille Haute",
     price: 69.99,
     category: "femme",
-    image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500&h=600&fit=crop",
+    image: IMG263,
     description: "Jean taille haute flatteuse, coupe moderne et confortable.",
     sizes: ["25", "26", "27", "28", "29", "30"],
     colors: ["Bleu foncé", "Noir", "Bleu délavé"],
@@ -99,7 +115,7 @@ export const products = [
     name: "Pull en Cachemire",
     price: 129.99,
     category: "femme",
-    image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500&h=600&fit=crop",
+   image: IMG267,
     description: "Pull luxueux en cachemire, douceur et élégance garanties.",
     sizes: ["XS", "S", "M", "L"],
     colors: ["Beige", "Gris", "Rose"],
@@ -114,7 +130,7 @@ export const products = [
     name: "T-shirt Coloré Enfant",
     price: 19.99,
     category: "enfant",
-    image: "https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=500&h=600&fit=crop",
+    image: IMG233,
     description: "T-shirt amusant et coloré pour enfants, en coton doux et résistant.",
     sizes: ["2-3 ans", "4-5 ans", "6-7 ans", "8-9 ans", "10-11 ans"],
     colors: ["Multicolore", "Bleu", "Rouge"],
@@ -127,7 +143,7 @@ export const products = [
     name: "Pantalon Confort Enfant",
     price: 34.99,
     category: "enfant",
-    image: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=500&h=600&fit=crop",
+    image: IMG101,
     description: "Pantalon confortable pour enfants, parfait pour jouer et bouger.",
     sizes: ["2-3 ans", "4-5 ans", "6-7 ans", "8-9 ans"],
     colors: ["Marine", "Gris", "Kaki"],
@@ -140,7 +156,7 @@ export const products = [
     name: "Robe Princesse",
     price: 39.99,
     category: "enfant",
-    image: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=500&h=600&fit=crop",
+    image: IMG236,
     description: "Robe de princesse pour petites filles, parfaite pour les occasions spéciales.",
     sizes: ["2-3 ans", "4-5 ans", "6-7 ans", "8-9 ans"],
     colors: ["Rose", "Violet", "Bleu ciel"],
@@ -153,7 +169,7 @@ export const products = [
     name: "Sweat Capuche Enfant",
     price: 29.99,
     category: "enfant",
-    image: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=500&h=600&fit=crop",
+   image: IMG226,
     description: "Sweat à capuche douillet pour enfants, idéal pour les journées fraîches.",
     sizes: ["2-3 ans", "4-5 ans", "6-7 ans", "8-9 ans", "10-11 ans"],
     colors: ["Gris", "Marine", "Rouge"],

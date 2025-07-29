@@ -43,31 +43,38 @@ const Header = () => {
 
           {/* Navigation Desktop */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link
-              to="/products"
-              className="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Tous les produits
-            </Link>
-            <Link
-              to="/products?category=homme"
-              className="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Homme
-            </Link>
-            <Link
-              to="/products?category=femme"
-              className="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Femme
-            </Link>
-            <Link
-              to="/products?category=enfant"
-              className="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Enfant
-            </Link>
-          </nav>
+  <Link
+    to="/products"
+    className="text-gray-700 hover:text-black transition-colors font-medium"
+  >
+    Tous les produits
+  </Link>
+  <Link
+    to="/products?category=homme"
+    className="text-gray-700 hover:text-black transition-colors font-medium"
+  >
+    Homme
+  </Link>
+  <Link
+    to="/products?category=femme"
+    className="text-gray-700 hover:text-black transition-colors font-medium"
+  >
+    Femme
+  </Link>
+  <Link
+    to="/products?category=enfant"
+    className="text-gray-700 hover:text-black transition-colors font-medium"
+  >
+    Enfant
+  </Link>
+  <Link
+    to="/products?category=accessoire"
+    className="text-gray-700 hover:text-black transition-colors font-medium"
+  >
+    Accessoires
+  </Link>
+</nav>
+
 
           {/* Barre de recherche */}
           <form onSubmit={handleSearch} className="hidden md:flex items-center">

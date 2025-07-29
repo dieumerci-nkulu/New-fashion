@@ -68,6 +68,12 @@ const Footer = () => {
                 className="block text-gray-300 hover:text-white transition-colors text-sm"
               >
                 Enfant
+                </Link>
+              <Link
+                to="/products?category=enfant"
+                className="block text-gray-300 hover:text-white transition-colors text-sm"
+              >
+                Accessoire
               </Link>
             </div>
           </div>
@@ -113,11 +119,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-gray-400" />
-                <span className="text-gray-300 text-sm">+33 1 23 45 67 89</span>
+                <span className="text-gray-300 text-sm">+243 80 886 58 86</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-gray-400" />
-                <span className="text-gray-300 text-sm">Paris, France</span>
+                <span className="text-gray-300 text-sm">Lubumbashi, RDC</span>
               </div>
             </div>
           </div>
