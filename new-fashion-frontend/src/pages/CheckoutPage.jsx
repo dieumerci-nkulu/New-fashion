@@ -195,7 +195,6 @@ const CheckoutPage = () => {
                     <div><Label htmlFor="address">Adresse</Label><Input id="address" name="address" value={formData.address} onChange={handleInputChange} required /></div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div><Label htmlFor="city">Ville</Label><Input id="city" name="city" value={formData.city} onChange={handleInputChange} required /></div>
-                      <div><Label htmlFor="postalCode">Code postal</Label><Input id="postalCode" name="postalCode" value={formData.postalCode} onChange={handleInputChange} required /></div>
                     </div>
                   </CardContent>
                 </Card>
