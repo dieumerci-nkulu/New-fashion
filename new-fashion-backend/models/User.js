@@ -76,16 +76,20 @@ const userSchema = new mongoose.Schema({
     ref: 'Product'
   }],
   lastLogin: Date,
-  isActive: {
+    isActive: {
     type: Boolean,
     default: true
+  }, 
+  balance: {
+    type: Number,
+    default: 0,
+    min: [0, 'Balance cannot be negative']
   }
 }, {
   timestamps: true
 });
 
 // Index for better query performance
-userSchema.index({ email: 1 });
 userSchema.index({ 'profile.firstName': 1, 'profile.lastName': 1 });
 
 // Hash password before saving

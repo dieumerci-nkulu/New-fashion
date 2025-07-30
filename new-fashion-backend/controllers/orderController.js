@@ -2,10 +2,12 @@ const { validationResult } = require('express-validator');
 const Order = require('../models/Order');
 const Product = require('../models/Product');
 const User = require('../models/User');
+const { sendConfirmationEmail } = require('../utils/notification');
 
 // Create new order
 const createOrder = async (req, res) => {
   try {
+    // Validation des données reçues
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({
@@ -17,27 +19,25 @@ const createOrder = async (req, res) => {
 
     const { items, shippingAddress, billingAddress, paymentMethod } = req.body;
 
-    // Validate products and calculate totals
+    // Récupérer l'utilisateur et vérifier qu'il existe
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'Utilisateur introuvable' });
+    }
+
+    // Valider les produits, stock et calculer le sous-total
     let subtotal = 0;
     const orderItems = [];
 
     for (const item of items) {
       const product = await Product.findById(item.productId);
-      
       if (!product || !product.isActive) {
-        return res.status(400).json({
-          success: false,
-          message: `Product ${item.productId} is not available`
-        });
+        return res.status(400).json({ success: false, message: `Produit ${item.productId} indisponible` });
       }
 
-      // Check stock availability
       const sizeInfo = product.sizes.find(s => s.size === item.size);
       if (!sizeInfo || sizeInfo.stock < item.quantity) {
-        return res.status(400).json({
-          success: false,
-          message: `Insufficient stock for ${product.name} in size ${item.size}`
-        });
+        return res.status(400).json({ success: false, message: `Stock insuffisant pour ${product.name} taille ${item.size}` });
       }
 
       const itemSubtotal = product.price * item.quantity;
@@ -53,14 +53,22 @@ const createOrder = async (req, res) => {
       });
     }
 
-    // Calculate tax and shipping
-    const tax = subtotal * 0.08; // 8% tax rate
-    const shipping = subtotal > 50 ? 0 : 10; // Free shipping over $50
+    // Calculer taxe, frais de port, total
+    const tax = subtotal * 0.08; // 8% taxe
+    const shipping = subtotal > 50 ? 0 : 10; // Frais de port offerts au-delà de 50$
     const total = subtotal + tax + shipping;
 
-    // Create order
+    // Vérifier solde utilisateur
+    if (user.balance < total) {
+      return res.status(400).json({
+        success: false,
+        message: `Solde insuffisant. Solde: $${user.balance}, Total: $${total}`
+      });
+    }
+
+    // Créer la commande
     const order = new Order({
-      user: req.user._id,
+      user: user._id,
       items: orderItems,
       shippingAddress,
       billingAddress: billingAddress || shippingAddress,
@@ -75,34 +83,37 @@ const createOrder = async (req, res) => {
 
     await order.save();
 
-    // Update product stock
+    // Déduire le solde de l'utilisateur
+    user.balance -= total;
+    await user.save();
+
+    // Mettre à jour le stock des produits
     for (const item of items) {
       await Product.updateOne(
-        { 
-          _id: item.productId,
-          'sizes.size': item.size
-        },
-        { 
-          $inc: { 'sizes.$.stock': -item.quantity }
-        }
+        { _id: item.productId, 'sizes.size': item.size },
+        { $inc: { 'sizes.$.stock': -item.quantity } }
       );
     }
 
-    // Clear user's cart
-    await User.findByIdAndUpdate(req.user._id, { cart: [] });
+    // Vider le panier de l'utilisateur
+    user.cart = [];
+    await user.save();
+
+    // Envoyer email de confirmation (fonction dans utils/notification.js)
+    await sendConfirmationEmail(user, order);
 
     await order.populate('items.product', 'name images');
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
-      message: 'Order created successfully',
+      message: 'Commande créée avec succès',
       data: { order }
     });
   } catch (error) {
     console.error('Create order error:', error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
-      message: 'Failed to create order'
+      message: 'Erreur serveur lors de la création de la commande'
     });
   }
 };

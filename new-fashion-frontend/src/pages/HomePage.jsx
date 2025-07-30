@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import api from '../services/api';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { ArrowRight, Star, Truck, Shield, Headphones } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ProductCard from '@/components/ProductCard';
-import { products } from '@/data/products';
+import { products as staticProducts } from '@/data/products';
 import IMG256 from '@/assets/IMG256.jpg';
 import IMG285 from '@/assets/IMG285.jpg';
 import IMG208 from '@/assets/IMG208.jpg';
@@ -14,7 +15,14 @@ import IMG234 from '@/assets/IMG234.jpg';
 import IMG142 from '@/assets/IMG142.jpg';
 
 const HomePage = () => {
-  const featuredProducts = products.slice(0, 6);
+  const featuredProducts = staticProducts.slice(0, 6);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    api.get('/products')
+      .then(res => setProducts(res.data))
+      .catch(err => console.error('Erreur produits:', err));
+  }, []);
 
   return (
     <div className="min-h-screen">
